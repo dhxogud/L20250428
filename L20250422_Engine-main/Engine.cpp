@@ -2,14 +2,13 @@
 #include "World.h"
 #include "Input.h"
 
-
 UEngine* UEngine::Instance = nullptr;
-
 
 UEngine::UEngine() //: World(nullptr)
 {
 	World = nullptr;
 	InputDevice = nullptr;
+	Renderer = nullptr;
 }
 
 UEngine::~UEngine()
@@ -47,6 +46,12 @@ void UEngine::Terminate()
 	{
 		delete InputDevice;
 		InputDevice = nullptr;
+	}
+
+	if (Renderer)
+	{
+		delete Renderer;
+		Renderer = nullptr;
 	}
 }
 

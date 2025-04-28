@@ -1,6 +1,6 @@
 #include "Windows.h"
 #include "Actor.h"
-
+#include "Renderer.h"
 
 AActor::AActor()
 {
@@ -30,11 +30,7 @@ void AActor::Tick()
 
 void AActor::Render()
 {
-	COORD Position = { static_cast<SHORT>(Location.X), (SHORT)Location.Y };
-
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Position);
-
-	std::cout << Shape;
+	URenderer::GetInstance()->Render(Location, Shape);
 }
 
 bool AActor::CompareTo(const AActor* A, const AActor* B)

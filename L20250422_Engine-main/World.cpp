@@ -6,6 +6,7 @@
 #include "Wall.h"
 #include "Floor.h"
 #include "Goal.h"
+#include "Renderer.h"
 
 UWorld::UWorld()
 {
@@ -32,11 +33,13 @@ void UWorld::Tick()
 
 void UWorld::Render()
 {
+	URenderer::GetInstance()->Clear();
     //system("cls");
 	for (auto Actor : Actors)
 	{
 		Actor->Render();
 	}
+	URenderer::GetInstance()->Present();
 }
 
 void UWorld::Load(std::string filename)
