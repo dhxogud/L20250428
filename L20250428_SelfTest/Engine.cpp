@@ -1,66 +1,69 @@
 #include "Engine.h"
 #include "World.h"
 #include "Input.h"
+#include "Renderer.h"
 
 UEngine* UEngine::Instance = nullptr;
 
-UEngine::UEngine() //: World(nullptr)
+UEngine::UEngine()
 {
 	World = nullptr;
 	InputDevice = nullptr;
 }
-
 UEngine::~UEngine()
 {
 	Terminate();
 }
 
-void UEngine::Initiailze(std::string filename)
+void UEngine::Initialize(const std::string& fileName)
 {
-	InputDevice = new UInput();
 	World = new UWorld();
-	World->Load(filename);
+	InputDevice = new UInput();
+	World->Load(fileName);
 
+	URenderer::GetInstance();
 }
 
 void UEngine::Run()
 {
-	while (true)
-	{
-		Input();
-		Tick();
-		Render();
-	}
+	InputDevice->Tick();
 }
 
 void UEngine::Terminate()
 {
-	if (World)
-	{
-		delete World;
-		World = nullptr;
-	}
-
 	if (InputDevice)
 	{
 		delete InputDevice;
 		InputDevice = nullptr;
 	}
+
+	if (World)
+	{
+		delete World;
+		World = nullptr;
+	}
+}
+
+UEngine* UEngine::GetInstance()
+{
+	if (!Instance)
+	{
+		Instance = new UEngine();
+	}
+	return Instance;
 }
 
 void UEngine::Input()
 {
-	InputDevice->Tick();
-	//Engine has a Input
-	//키보드, 마우스, 조이스틱, 터치, 자이로 센스
+
 }
 
 void UEngine::Tick()
 {
-	World->Tick();
+
 }
 
 void UEngine::Render()
 {
-	World->Render();
+
 }
