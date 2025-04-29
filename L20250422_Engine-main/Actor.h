@@ -19,9 +19,6 @@ public:
 	virtual void Render();
 	virtual void Load();
 
-	char Shape;
-	int RenderOrder;
-
 	static bool CompareTo(const AActor* A, const AActor* B);
 
 	SDL_Color Color;
@@ -32,13 +29,13 @@ public:
 	SDL_Texture* Texture;
 };
 
-class ActorCompareTo
-{
-public:
-	bool CompareTo(const AActor* A, const AActor* B)
-	{
-		return (A->RenderOrder > B->RenderOrder);
-	}
-};
+//class ActorCompareTo
+//{
+//public:
+//	bool CompareTo(const AActor* A, const AActor* B)
+//	{
+//		return (A->RenderOrder > B->RenderOrder);
+//	}
+//};
 
 //Actor has a Fvector2D

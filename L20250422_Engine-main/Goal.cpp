@@ -2,14 +2,19 @@
 
 AGoal::AGoal()
 {
-	Shape = 'G';
-	RenderOrder = 8;
+	Color.r = 255;
+	Color.g = 255;
+	Color.b = 255;
+	Color.a = 0;
 }
 AGoal::AGoal(const FVector2D& InVector)
 {
-	Shape = 'G';
+	Color.r = 255;
+	Color.g = 255;
+	Color.b = 255;
+	Color.a = 0;
 	Location = InVector;
-	RenderOrder = 8;
+
 }
 AGoal::~AGoal()
 { 

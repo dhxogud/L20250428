@@ -5,18 +5,12 @@
 
 AActor::AActor()
 {
-	//Shape = ' ';
 	ColorKey = {255, 255, 255, 255};
-	RenderOrder = 0;
-
-	
 }
 AActor::AActor(const FVector2D& InVector)
 {
-	//Shape = ' ';
 	ColorKey = { 255, 255, 255, 255 };
 	Location = InVector;
-	RenderOrder = 0;
 }
 
 AActor::~AActor()

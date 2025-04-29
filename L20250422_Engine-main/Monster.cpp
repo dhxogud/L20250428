@@ -4,8 +4,6 @@
 
 AMonster::AMonster()
 {
-	Shape = 'M';
-	RenderOrder = 6;
 	Color.r = 0;
 	Color.g = 0;
 	Color.b = 255;
@@ -13,9 +11,7 @@ AMonster::AMonster()
 }
 AMonster::AMonster(const FVector2D& InVector)
 {
-	Shape = 'M';
 	Location = InVector;
-	RenderOrder = 6;
 	Color.r = 0;
 	Color.g = 0;
 	Color.b = 255;

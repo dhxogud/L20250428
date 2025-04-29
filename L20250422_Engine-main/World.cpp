@@ -95,10 +95,10 @@ void UWorld::Load(std::string filename)
 	//static으로 CompartTo 구현 (AActors.cpp  에 구현되어 있다.)
 	//std::sort(Actors.begin(), Actors.end(), AActor::CompareTo);
 
-	//lambda 함수 구현
-	std::sort(Actors.begin(), Actors.end(), [](const AActor* A, AActor* B) {
-		return A->RenderOrder > B->RenderOrder;
-	});
+	////lambda 함수 구현
+	//std::sort(Actors.begin(), Actors.end(), [](const AActor* A, AActor* B) {
+	//	return A->RenderOrder > B->RenderOrder;
+	//});
 }
 
 void UWorld::SpawnActor(AActor* NewActor)

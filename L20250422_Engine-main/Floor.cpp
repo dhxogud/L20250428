@@ -2,8 +2,6 @@
 
 AFloor::AFloor()
 {
-	Shape = ' ';
-	RenderOrder = 10;
 	Color.r = 255;
 	Color.g = 255;
 	Color.b = 255;
@@ -11,9 +9,7 @@ AFloor::AFloor()
 }
 AFloor::AFloor(const FVector2D& InVector)
 {
-	Shape = ' ';
 	Location = InVector;
-	RenderOrder = 10;
 	Color.r = 255;
 	Color.g = 255;
 	Color.b = 255;
