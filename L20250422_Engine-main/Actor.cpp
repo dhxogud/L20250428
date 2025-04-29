@@ -1,15 +1,24 @@
 #include "Windows.h"
 #include "Actor.h"
 #include "Renderer.h"
+#include "SDL3/SDL.h"
 
 AActor::AActor()
 {
-	Shape = ' ';
+	//Shape = ' ';
 	RenderOrder = 0;
+	if (TextureFileName.size() > 0)
+	{
+		std::string Temp = "./data/" + TextureFileName;
+		Surface = SDL_LoadBMP(Temp.c_str());
+		//VRAM : CPU가 GPU에게 일거리 줄때 공간
+		Texture = SDL_CreateTextureFromSurface(URenderer::GetInstance()->Renderer, Surface);
+	}
+	
 }
 AActor::AActor(const FVector2D& InVector)
 {
-	Shape = ' ';
+	//Shape = ' ';
 	Location = InVector;
 	RenderOrder = 0;
 }
@@ -26,11 +35,12 @@ void AActor::AddActorWorldOffset(FVector2D offset)
 
 void AActor::Tick()
 {
+
 }
 
 void AActor::Render()
 {
-	URenderer::GetInstance()->Render(Location, Shape);
+	URenderer::GetInstance()->Render(this);
 }
 
 bool AActor::CompareTo(const AActor* A, const AActor* B)

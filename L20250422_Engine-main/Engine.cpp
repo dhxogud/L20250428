@@ -8,6 +8,8 @@ UEngine::UEngine() //: World(nullptr)
 {
 	World = nullptr;
 	InputDevice = nullptr;
+	Window = nullptr;
+	IsRunning = true;
 }
 
 UEngine::~UEngine()
@@ -17,6 +19,10 @@ UEngine::~UEngine()
 
 void UEngine::Initiailze(std::string filename)
 {
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
+	Window = SDL_CreateWindow("Sample", 800, 600, SDL_WINDOW_OPENGL);
+
 	InputDevice = new UInput();
 	World = new UWorld();
 	World->Load(filename);
@@ -25,8 +31,15 @@ void UEngine::Initiailze(std::string filename)
 
 void UEngine::Run()
 {
-	while (true)
+	while (IsRunning)
 	{
+		switch (Event.type)
+		{
+			case SDL_EVENT_QUIT:
+				IsRunning = false;
+				break;
+		}
+		SDL_PollEvent(&Event);
 		Input();
 		Tick();
 		Render();
@@ -46,6 +59,9 @@ void UEngine::Terminate()
 		delete InputDevice;
 		InputDevice = nullptr;
 	}
+
+	SDL_DestroyWindow(Window);
+	SDL_Quit();
 }
 
 void UEngine::Input()

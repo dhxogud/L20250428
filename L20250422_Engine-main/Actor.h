@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include "Vector2D.h"
+#include "SDL3/SDL.h"
+#include <string>
+
 
 class AActor
 {
@@ -17,7 +20,14 @@ public:
 
 	char Shape;
 	int RenderOrder;
+
 	static bool CompareTo(const AActor* A, const AActor* B);
+
+	SDL_Color Color;
+
+	std::string TextureFileName;
+	SDL_Surface* Surface;
+	SDL_Texture* Texture;
 };
 
 class ActorCompareTo
