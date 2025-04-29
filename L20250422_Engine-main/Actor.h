@@ -17,6 +17,7 @@ public:
 
 	virtual void Tick();
 	virtual void Render();
+	virtual void Load();
 
 	char Shape;
 	int RenderOrder;
@@ -24,6 +25,7 @@ public:
 	static bool CompareTo(const AActor* A, const AActor* B);
 
 	SDL_Color Color;
+	SDL_Color ColorKey;
 
 	std::string TextureFileName;
 	SDL_Surface* Surface;
